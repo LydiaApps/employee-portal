@@ -1,0 +1,146 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+#empdetails {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    
+}
+
+#empdetails td, #empdetails th {
+    border: 1px solid #370C4E;
+    padding: 8px;
+}
+
+#empdetails tr:nth-child(even){background-color: #f2f2f2;}
+
+#empdetails tr:hover {background-color: #ddd;}
+
+#empdetails th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4caf99;
+    color: white;
+}
+ #div1, select {
+            width: 500px;
+            margin-left: auto;
+    margin-right: auto;
+    padding:17px;padding-left:55px;width:300px;
+        font-size:13px;color:gray;
+        background-image:url('http://i47.tinypic.com/r02vbq.png');
+        background-repeat:no-repeat;
+        background-position:left center;outline:0;
+            
+        }
+        table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+     
+}
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #370C4E;
+    
+}
+
+/* Style the content */
+.content {
+    background-color: #ddd;
+    padding: 10px;
+    height: 200px; /* Should be removed. Only for demonstration */
+}
+
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angucomplete-alt/2.4.1/angucomplete-alt.min.js"></script>
+
+    <title></title>
+    <link href="css/angular-bootstrap.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.1/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.1/ui-bootstrap-tpls.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+ <script type="text/javascript" src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>
+</head>
+<body ng-app="dataRetrive">
+    <div ng-controller="dataController" ng-cloak class="ng-cloak">
+<h1><center>Employee Portal</center></h1>
+        <br /><br />
+        <table id="empdetails" >
+       
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#" ng-click="orderByField='name'; reverseSort = !reverseSort">
+                            Employee Name
+                        </a>
+                    </th>
+                    <th>
+                        <a  ng-click="orderByField='hiredate'">
+                          Hire Date
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="orderByField='salary'; reverseSort = !reverseSort">
+                           Salary
+                        </a>
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | filter: selectedEmployee | orderBy:orderByField:reverseSort" >
+                    <td >
+                     <a href="#" ng-click="edit('{{employee.name}}')">{{ employee.name }}</a>
+                        
+                    </td>
+                    <td>
+                        {{ employee.hiredate | date:"MM/dd/yyyy" }}
+                    </td>
+                    
+                    <td>
+                        {{ employee.salary  }}
+                    </td>
+                </tr>
+            </tbody>
+           
+        </table>
+        <br /><br />
+<div id="div1" ng-style="{'width': getMaxLength()}">
+ <section  class="employee">
+ <input type="search" results ng-model="selectedEmployee"  uib-typeahead="emp.name for emp in employees " class="form-control" placeholder="Search employee..."
+ ng-change="employeeDetails()">
+      
+      </div>
+      <div>
+    <input type="button" style="cursor:pointer" value="Get Details" ng-click ="getEmployeDetails(selectedEmployee)" /><br /><br />
+      <br />
+        <br />
+        
+      <div ng-show="IsVisible" class="topnav">
+  <h3>Employee details</h3>
+</div>
+
+<div ng-show="IsVisible" class="content">
+  <h2>Employee Name:</h2> {{empDetails.name}}
+  </div>
+  </div>
+
+  </div>
+   </section>
+  
+    <script src="js/angular-bootstrap.js" type="text/javascript"></script>
+   <script src="js/dataRetrive.js"></script>
+ 
+   
+</body>
+</html>
+
+

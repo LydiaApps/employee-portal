@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.lydia.employee.EmployeeApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.946 s - in com.lydia.employee.EmployeeApplicationTests
